@@ -9,18 +9,10 @@
     1. `dotnet ef database update`
     1. Check in DB browser that the `.db` file, `datingapp.db`, has been updated with the expected tables/data.
 
-## Useful commands
+## Repository Pattern
+* Basic concepts are creating an interface for the client to utilize without having to worry about the implementation. It's the basic definition of using an interface to keep code isolated.
 
 # Angular
-### Useful Files
-
-### General Concepts
-
-### Types
-
-### Useful Commands
-
-### Shortcuts with Extensions
 
 # Chrome Debugging
 

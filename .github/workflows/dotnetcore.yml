@@ -14,6 +14,6 @@ jobs:
       with:
         dotnet-version: 3.0.101
     - name: Build with dotnet
-      run: dotnet build ./src/WP.WebAPI/WP.WebAPI.csproj --configuration Release
-    - name: Tests with dotnet
-      run: dotnet test ./src/WP.WebAPI.Tests/WP.WebAPI.Tests.csproj
+      run: dotnet build ./src/DatingApp.API/DatingApp.API.csproj --configuration Release
+    # - name: Tests with dotnet
+    #   run: dotnet test ./src/WP.WebAPI.Tests/WP.WebAPI.Tests.csproj

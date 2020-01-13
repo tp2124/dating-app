@@ -39,5 +39,5 @@
 * `shift + option + [u,i,o]` will shift between a components: `.ts`, `.html`, and `.css`
 
 # Chrome Debugging
-* See Basic API Data ![See Basic API Data](docs/notes_images/see_initial_api_data.png)
+* See Basic API Data ![See Basic API Data](notes_images/see_initial_api_data.png)
 

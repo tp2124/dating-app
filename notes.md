@@ -1,11 +1,17 @@
+# ASP.NET Core
 ## To run Production instead of Development
-* Open `launchSettings.json`, "profiles" { "<proj_name>" : {"environmentVariables" : {"ASPNETCORE_ENVIRONMENT" = ---->__"Production"__<------}}}
+* Open `launchSettings.json`: 
+```
+"profiles" { "<proj_name>" : 
+        { "environmentVariables" : 
+            { "ASPNETCORE_ENVIRONMENT" = ->"Production"<-}}}
+```
 
 ## Useful commands
 * `dotnet watch run`
   * This will watch for any code changes and re-compile and build
 
-## Angular
+# Angular
 ### Useful Files
 * `app.module.ts` is required
 * `package.json` stores all the module and version dependencies.
@@ -31,5 +37,6 @@
 ### Shortcuts with Extensions
 * `shift + option + [u,i,o]` will shift between a components: `.ts`, `.html`, and `.css`
 
-# TODO
-[ ] Change VSCode Settings to accept current file spacing techniques.
+# Chrome Debugging
+* See Basic API Data ![See Basic API Data](docs/notes_images/see_initial_api_data.png)
+

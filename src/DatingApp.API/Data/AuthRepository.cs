@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using DatingApp.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Data
 {
@@ -12,9 +13,32 @@ namespace DatingApp.API.Data
             _context = context;
         }
 
-        public Task<User> Login(string username, string password)
+        public async Task<User> Login(string username, string password)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username.Equals(username));
+
+            if (user == null)
+                return null;
+
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return null;
+
+            return user;
+        }
+
+        ///
+        // passwordSalt = the randomized hash that is stored and directly associated with a user to allow for more 
+        //      uniqueness when hashing a password. This will allow users with the same passwords to still have unique hashes.
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt)) {
+                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                for (int i=0; i < computedHash.Length; i++) {
+                    if (computedHash[i] != passwordHash[i])
+                        return false;
+                }
+            }
+            return true;
         }
 
         public async Task<User> Register(User user, string password)
@@ -34,18 +58,18 @@ namespace DatingApp.API.Data
         {
             // Using IDispose on sha512 to ensure that this generated hash is not left in memory for any security concerns.
             // This will be utilized in the byte[] variables, but it will be cleaned up in memory.
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512()) {
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
 
-        public Task<bool> UserExists(string username)
+        public async Task<bool> UserExists(string username)
         {
-            throw new System.NotImplementedException();
+            if (await _context.Users.AnyAsync(u => u.Username.Equals(username)))
+                return true;
+
+            return false;
         }
-
-
     }
 }

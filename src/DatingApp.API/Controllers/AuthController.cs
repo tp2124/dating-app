@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace DatingApp.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] // This will automatically be reading the attributes, as well as others, from the DTO and returning errors
+    // in following the attributes's rules.
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
@@ -16,8 +17,11 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto) {
-            // validate request as this data is coming from the user.
+        public async Task<IActionResult> Register(/*[FromBody] Used to parse data from body*/UserForRegisterDto userForRegisterDto) {
+            // This can be done if the [ApiController] is removed to allow for the same ModelState error messages
+            // // Coming back from the requests
+            // if (!ModelState.IsValid) 
+            //     return BadRequest(ModelState);
 
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 

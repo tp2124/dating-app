@@ -25,6 +25,10 @@ A concept with token validation is that the server does not need to go back to t
     * The `JWT` will be stored locally on the client after authenticating with the server. Any further requests after recieving the Token will have the client sending the Token along for every further request that requires authentication. 
       * By sending the token, the server can verify the user based on the _secret_. The server will do this based on any request it wants.
 
+## Resources
+* jwt.io is a website to dump the token from a successful Login's response Body (found in the bottom of Postman). You can copy and paste the Encoded `JWToken`, and you can see the decoded content in the website. 
+  * An extra reason to not put anything important in the Token as it can be easily decoded!
+
 
 # ASP.NET Core
 ## Dependency Injection

@@ -1,6 +1,31 @@
 # Security
 * `Salting` is a concept to add to a password with a random addition to the password store per user. This is used to help make easy passwords more complex.
 
+# Token Authentication
+Tokens will allow users to not have to maintain a consistent connection to our API.
+A concept with token validation is that the server does not need to go back to the DB to validate the user. It needs to validat the token itself without hitting a data store.
+
+* `JSON Web Tokens`
+  * Using this as it's an industry standard for tokens.
+  * Self contained piece of data including:
+    * Credentials
+    * Claims
+    * Other info.
+  * `JWT Structure` This is just a file.
+    * __Header__
+      * Metadata about this file
+    * __Payload__
+      * The meaningful data of the file.
+      * This will be human readable, so concern must be taken with what data is stored here.
+    * __Secret__
+      * Used to encode/hash the header and the algorithm (a separate value). 
+      * The secret is stored on the server and never is sent to the client. 
+        * The client sends THIS WHOLE TOKEN to the server, and the server would then use this secret to validate the Token it recieved. 
+    * The client is able to decode the Header and Payload without needing the _secret_. If the _secret_ does not match what is on the server, then it won't pass validation on the server, and a user that tried to invent the token without the server will fail validation.
+    * The `JWT` will be stored locally on the client after authenticating with the server. Any further requests after recieving the Token will have the client sending the Token along for every further request that requires authentication. 
+      * By sending the token, the server can verify the user based on the _secret_. The server will do this based on any request it wants.
+
+
 # ASP.NET Core
 ## Dependency Injection
 * 3 Notable types of ways to add services to the IServiceCollection:

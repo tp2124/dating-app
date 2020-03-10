@@ -31,8 +31,9 @@
             "type": "process",
             "args": [
                 "watch",
-                "run",
+                "-p",
                 "${workspaceFolder}/src/DatingApp.API/DatingApp.API.csproj",
+                "run",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

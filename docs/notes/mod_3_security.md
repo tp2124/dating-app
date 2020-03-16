@@ -54,6 +54,14 @@ A concept with token validation is that the server does not need to go back to t
 ## Repository Pattern
 * Basic concepts are creating an interface for the client to utilize without having to worry about the implementation. It's the basic definition of using an interface to keep code isolated.
 
+## `dotnet user-secrets`
+* `dotnet user-secrets` allows us to store secrets for DEVELOPMENT ONLY. This does not apply to Production.
+While this is cool, for the Production environment, we almost certainly want to use Environment variables.
+### How to Setup `user-secrets`
+1. `dotnet user-secrets init`
+1. `dotnet user-secrets set "Category:Token" "my value"`
+1. `dotnet user-secrets list`
+
 # Angular
 
 # Chrome Debugging

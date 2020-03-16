@@ -29,6 +29,12 @@ A concept with token validation is that the server does not need to go back to t
 * jwt.io is a website to dump the token from a successful Login's response Body (found in the bottom of Postman). You can copy and paste the Encoded `JWToken`, and you can see the decoded content in the website. 
   * An extra reason to not put anything important in the Token as it can be easily decoded!
 
+## Using Authentication Required Call
+1. Get the token via the Auth login endpoint we created. Copy that token. 
+1. Go your query for an authentication required call.
+    1. In the Header:
+        * Key: `Authorization`
+        * Value: `Bearer <copied_key>`
 
 # ASP.NET Core
 ## Dependency Injection

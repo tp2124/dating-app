@@ -12,7 +12,7 @@
   * This will watch for any code changes and re-compile and build
 
 # Angular
-### Useful Files
+## Useful Files
 * `app.module.ts` is required
 * `package.json` stores all the module and version dependencies.
 * "Components" are responsible for providing the data to the template Urls (HTML) that will be able to display the content.
@@ -21,7 +21,7 @@
   * The module will be bootstrapped by `main.ts` at the root.
   * As we are only building a single page, we only need to bootstrap one thing.
 
-### General Concepts
+## General Concepts
 * Angular CLI handles running minifier, WebPack, on all the code and bundles it. It also injects the javascript files into index.html. This will set up the html to be ready to handle the `<app-root></app-root>` instance.
   * No WebPack config, but `angular.json` is there that defines where the javascript will be injected to (at "index").
 * `.spec.ts` is a file that can be used with testing.
@@ -29,13 +29,13 @@
   * It will have notifications that will be triggered when data comes in. To utilizes these notifications, code must `subscribe` to the Observable.
 * `*` is a structural directive for `*ngFor`. In Angular, this means that this will be able to modify the DOM (Domain Object Model. What the browser uses to display the HTML) by this `for` loop.
 
-### Types
+## Types
 * `any` = `var` in C# or just any generic object can be assigned to this variable.
 
-### Useful Commands
+## Useful Commands
 * `ng serve` in the directory boots up the Angular Application.
 
-### Shortcuts with Extensions
+## Shortcuts with Extensions
 * `shift + option + [u,i,o]` will shift between a components: `.ts`, `.html`, and `.css`
 
 # Chrome Debugging

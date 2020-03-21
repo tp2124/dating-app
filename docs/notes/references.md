@@ -5,6 +5,7 @@
 * `npm install` to install fresh from the `packages.json` dependencies.
 * Extension Hotkeys:
     * `shift + option + [u,i,o]` will shift between a components: `.ts`, `.html`, and `.css`
+    * type: `div.my-div-name` and hit Enter. This will then create the HTML tag and do all the awkward character typing for you.
 
 ## .NET
 * `dotnet user-secrets`

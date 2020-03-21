@@ -27,5 +27,9 @@ There are 2 types of forms:
 * Touched: Something has been typed and focus has left the form.
 * Dirtied: Something has been typed into the form.
 
+### Structural Directive
+Structural Directives will directly change the DOM. 
+`*ngIf=` This Structural Directive is denoted due to the `*`. This will completely remove this tag, and it's children, from the DOM if it fails.
+
 # Chrome Debugging
 In the Inspector (F12), you can use the Network tab to see what calls have gone out from the client application.

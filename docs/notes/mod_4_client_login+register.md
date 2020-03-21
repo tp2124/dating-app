@@ -18,9 +18,10 @@ Components are automatically `@Injectable`. That is why you won't see them expli
 ### Forms
 Forms can support 2 way bindings from the template (HTML) to the form.
 * `name=<string>` is required by Angular to designate form controls.
-There are 2 types of forms:
+There are 2 types of ANGULAR forms:
 * `Template` - Meant to be simpler
     * `#loginForm="ngForm"` into the `<form>` tag.
+    * `#registerForm="ngForm"`
 * `Reactive` 
 #### States
 * Valid: Successfully meeting all validation criteria. This is dictated by other attribtes. Example: `[disabled]`

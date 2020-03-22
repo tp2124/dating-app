@@ -14,6 +14,8 @@ The job of a component is to provide data to the HTML template.
     * There is a `Generate Service` with all the Angular extensions we installed.
     * This is similar to the `repository` on the API code.
 Components are automatically `@Injectable`. That is why you won't see them explicitly tagged, but they will be in services.
+#### Parent to Child Component Communication
+We are sending data down in this example and share data amongst components.
 
 ### Forms
 Forms can support 2 way bindings from the template (HTML) to the form.

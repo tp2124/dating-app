@@ -16,6 +16,9 @@ The job of a component is to provide data to the HTML template.
 Components are automatically `@Injectable`. That is why you won't see them explicitly tagged, but they will be in services.
 #### Parent to Child Component Communication
 We are sending data down in this example and share data amongst components.
+* `Input` in the child, will have the parent communicate data to the child.
+* `Output` in the child, will have the child communicate data to the parent.
+    * `Output`s will be event emitters that will be monitored/listened to by the parent.
 
 ### Forms
 Forms can support 2 way bindings from the template (HTML) to the form.

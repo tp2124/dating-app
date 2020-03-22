@@ -3,6 +3,7 @@
 * The default `content-type` is `application/json`. This will be used if nothing is provided in a `post` header.
 
 # Angular
+In .ts files, all functions that return `Observable<T>` objects need to subscribe to it inside of the component in order for the function to be usable. 
 ## Shortcuts
 * Creating component: use the right click in the Solution Explorer `Create Component` and this will stub in the required changes and referneces.
 

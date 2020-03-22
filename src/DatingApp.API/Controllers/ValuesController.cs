@@ -22,6 +22,7 @@ namespace DatingApp.API.Controllers
         }
 
         // GET /values
+        [AllowAnonymous] // Example on how to make a call that is not Authorized.
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {

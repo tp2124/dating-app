@@ -8,12 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.0.101
-    - name: Build with dotnet
-      run: dotnet build ./src/DatingApp.API/DatingApp.API.csproj --configuration Release
-    # - name: Tests with dotnet
-    #   run: dotnet test ./src/WP.WebAPI.Tests/WP.WebAPI.Tests.csproj
+      - uses: actions/checkout@master
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@master
+        with:
+          dotnet-version: 3.0.101
+
+      - name: Build .NET API
+        working-directory: src/DatingApp.API
+        run: dotnet build --configuration Release
+
+      # - name: Tests with dotnet
+      #   run: dotnet test ./src/WP.WebAPI.Tests/WP.WebAPI.Tests.csproj

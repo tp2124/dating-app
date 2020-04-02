@@ -29,9 +29,9 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> Register(/*[FromBody] Used to parse data from body*/UserForRegisterDto userForRegisterDto)
         {
             // This can be done if the [ApiController] is removed to allow for the same ModelState error messages
-            // // Coming back from the requests
-            // if (!ModelState.IsValid) 
-            //     return BadRequest(ModelState);
+            // Coming back from the requests
+            if (!ModelState.IsValid) 
+                return BadRequest(ModelState);
 
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 

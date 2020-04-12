@@ -24,8 +24,7 @@ export class NavComponent implements OnInit {
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token; // returns a true or false value. If something is in `token`, it will return true. Otherwise, it will be false.
+    return this.authService.loggedIn();
   }
 
   logout() {

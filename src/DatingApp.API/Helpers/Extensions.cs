@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace DatingApp.API.Helpers
@@ -10,6 +11,14 @@ namespace DatingApp.API.Helpers
             // Allowing the Application-Error to be displayed in compliance with CORS
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
+
+        public static int CalculateAge(this DateTime birthdate) {
+            var age = DateTime.Today.Year - birthdate.Year;
+            if (birthdate.AddYears(age) > DateTime.Today)
+                age--;
+
+            return age;
         }
     }
 }

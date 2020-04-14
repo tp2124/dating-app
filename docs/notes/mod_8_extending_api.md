@@ -11,7 +11,36 @@ SQLite should only be used for local and early development. With this mentality,
 1. `dotnet ef database update` This will result in the DB that is empty but has the schema before the last migration.
 
 ## Seeind Data to DB.
+* `https://www.json-generator.com/` Below is an example format for generating the women data (3 minor changes were made and then generated again to create men):
+<details>
+  <summary>Example Generate Format</summary>
+[
+  '{{repeat(5)}}',
+  {
+    Username: '{{firstName("female")}}',
+    Gender: 'female',
+    DateOfBirth: '{{date(new Date(1950,0,1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+    Password: 'password',
+    KnownAs: function(){ return this.Username; },
+    Created: '{{date(new Date(2017,0,1), new Date(2017, 7, 31), "YYYY-MM-dd")}}',
+    LastActive: function(){return this.Created; },
+    Introduction: '{{lorem(1, "paragraphs")}}',
+    LookingFor: '{{lorem(1, "paragraphs")}}',
+    Interests: '{{lorem(1, "sentences")}}',
+    City: '{{city()}}',
+    Country: '{{country()}}',
+    Photos: [
+        {
+          url: function(num) {
+          return 'https://randomuser.me/api/portraits/women/' + num.integer(1,99) + '.jpg';
+        },
+        isMain: true,
+        description: '{{lorem()}}'
+      }
+    ]
+  }
+]
+</details>
 
-# Angular
 
-# Chrome Debugging
+

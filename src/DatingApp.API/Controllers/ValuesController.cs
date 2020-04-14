@@ -12,7 +12,7 @@ namespace DatingApp.API.Controllers
 {
     [Authorize] // Everything inside this Controller must be an authorized request.
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ValuesController : ControllerBase
     {
         private readonly DataContext _context;

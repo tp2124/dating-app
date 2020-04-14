@@ -21,3 +21,12 @@
         * `dotnet ef database update`
 * `dotnet watch run`
 * `dotnet tool install --global dotnet-ef`
+
+### How to Hit API Endpoint with Auth
+1. Get auth token from logging in via `api/auth/login`
+    1. This needs `username` and `password` set.
+1. Copy the return string value from `token` in the response.
+1. Go to your protected endpoint.
+1. Add to your Header:
+    1. `Key`: `Authorization`
+    1. `Value`: `Bearer <copied_token_value>`

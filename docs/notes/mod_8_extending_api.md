@@ -42,5 +42,7 @@ SQLite should only be used for local and early development. With this mentality,
 ]
 </details>
 
-
+## Json Libraries
+In .NET 3.0+, System.Text.Json is used by default for Json serialization. However, it's not that mature yet, so we are going to point it back to using `NewtonsoftJson`.
+This was already added to the .csproj as this was pre-popualted early in the project.
 

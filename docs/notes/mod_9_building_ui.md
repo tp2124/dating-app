@@ -9,5 +9,6 @@ TypeScript is a superset of JavaScript. We will write all of our code in TypeScr
 ![](images/typescriptFeatures.png)
 * This conversion process from TypeScript -> JavaScript is called `transpiled`.
 
+* `Route Resolvers` can be used to load the data for a component before it is requested. This can alleviate the need for null-checking ("safe navigation operators") '?' in .html references to the component data.
 
 # Chrome Debugging

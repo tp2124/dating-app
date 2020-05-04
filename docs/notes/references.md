@@ -8,6 +8,7 @@
     * Windows: `alt + [u,o,p]` for the hotkeys above.
     * type: `div.my-div-name` and hit Enter. This will then create the HTML tag and do all the awkward character typing for you.
     * In a component .html, type `a-ngmodel` then Enter, this will substitute the `[(ngModel)]="vairable"`. This saves the odd character typing.
+    * `a-routerlink` will expand to include all the router link element of an html.
 
 ## .NET
 * `dotnet user-secrets`

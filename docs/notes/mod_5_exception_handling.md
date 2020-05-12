@@ -8,7 +8,7 @@
 * __500 Error__ Is always based on the Server Application (Not Angular). You should start by checking the terminal from the ASP.NET Core logs.
     * To get output in Prod, you can return `new StatusCode` from the Controller with a message. This will be displayed in both Dev and Prod environments as the endpoint is being specific about the error to return.
 ## User Messages
-![Where to find in the Debugger](notes_images/user_messages_chrome_debugger.png)
+![Where to find in the Debugger](images/user_messages_chrome_debugger.png)
 User messages can come from the Nav components. This will show errors in a more meaningful way of what's being passed back in exceptions.
 
 ## When an Exception is Thrown in Client App

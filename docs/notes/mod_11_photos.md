@@ -18,6 +18,8 @@ For this, we will be using Cloud Storage and using __Cloudinary__ due to it's gr
 
 
 # ASP.NET Core
+* Running `dotnet ef migrations add AddedPublicId` to generate migration for new property in `Photo`
+* Using NuGet plugin to install `CloudinaryDotNet`. `dotnet restore` after this to ensure the package is retrieved. 
 
 # Angular
 

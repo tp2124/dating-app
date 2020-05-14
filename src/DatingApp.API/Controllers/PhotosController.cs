@@ -51,10 +51,14 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPhotoForUser(int userId, PhotoForCreationDto photoForCreationDto) {
+        public async Task<IActionResult> AddPhotoForUser(int userId, [FromForm]PhotoForCreationDto photoForCreationDto) {
             // Checks to make sure the user's token is matching the data that this request is trying to edit matches.
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
+
+            if (photoForCreationDto.File == null) {
+                return BadRequest("File was set to an image to be uploaded");
+            }
 
             var userFromRepo = await _repo.GetUser(userId);
 

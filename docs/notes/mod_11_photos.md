@@ -13,6 +13,10 @@
 
 For this, we will be using Cloud Storage and using __Cloudinary__ due to it's great free tier. It also supports API Keys and API Secrets.
 
+## Testing Photos Controller
+![Testing Photos Controller](images/testingPhotosController.png)
+1 = This string must match what the name of the paramter of the `IFormFile` in the Creation Dto
+
 ### Flow Diagram
 ![Data Flow](images/photoStorageFlow.png)
 

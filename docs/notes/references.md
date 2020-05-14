@@ -1,4 +1,3 @@
-
 # Useful Commands
 ## Angular
 * `ng serve` in the directory boots up the Angular Application.
@@ -31,3 +30,9 @@
 1. Add to your Header:
     1. `Key`: `Authorization`
     1. `Value`: `Bearer <copied_token_value>`
+
+# Debugging
+## VS Code
+* Attaching to a running instance of your web API.
+    * When using `.NET Core Attach`, attach to `<name_of_project>.exe`.
+    * If that doesn't exist, you want to attach to the `<name_of_project>.dll` instance of `dotnet`.

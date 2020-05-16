@@ -20,6 +20,9 @@ For this, we will be using Cloud Storage and using __Cloudinary__ due to it's gr
 ### Flow Diagram
 ![Data Flow](images/photoStorageFlow.png)
 
+## Uploading File in Angular
+* Install notes are at: https://valor-software.com/ng2-file-upload/ .
+
 
 # ASP.NET Core
 * Running `dotnet ef migrations add AddedPublicId` to generate migration for new property in `Photo`

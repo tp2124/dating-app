@@ -36,6 +36,12 @@ For this, we will be using Cloud Storage and using __Cloudinary__ due to it's gr
 * Running `dotnet ef migrations add AddedPublicId` to generate migration for new property in `Photo`
 * Using NuGet plugin to install `CloudinaryDotNet`. `dotnet restore` after this to ensure the package is retrieved. 
 
+## Delete Photo
+* Need to clear from both
+    * Cloudinary
+    * DB Reference to Cloudinary URL
+* How to handle photos from both Cloudinary and random photo API.
+
 # Angular
 
 # Chrome Debugging

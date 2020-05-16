@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -126,6 +127,44 @@ namespace DatingApp.API.Controllers
             }
 
             return BadRequest("Could not set photo to main.");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id) {
+            // Checks to make sure the user's token is matching the data that this request is trying to edit matches.
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUser(userId);
+
+            if (!user.Photos.Any(p => p.Id == id)) {
+                return Unauthorized();
+            }
+
+            var photoFromRepo = await _repo.GetPhoto(id);
+
+            if (photoFromRepo.IsMain) {
+                return BadRequest("Cannot delete the main photo.");
+            }
+
+            // Works for Cloudinary, but what about the random public photo API.
+            // This 'if' check is to validate that this photo is from Cloudinary. 
+            // For encapsulation, this should be moved into a function.
+            if (photoFromRepo.PublicId != null) {
+                var deleteParams = new DeletionParams(photoFromRepo.PublicId);
+                var result = _cloudinary.Destroy(deleteParams);
+                if (result.Result.Equals("ok", StringComparison.OrdinalIgnoreCase)) {
+                    _repo.Delete(photoFromRepo);
+                }
+            } else {
+                _repo.Delete(photoFromRepo);
+            }
+
+            if (await _repo.SaveAll()){
+                return Ok();
+            }
+
+            return BadRequest("Failed to delete the photo");
         }
     }
 }

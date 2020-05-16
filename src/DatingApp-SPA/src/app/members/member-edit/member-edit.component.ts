@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm', {static: true}) editForm: NgForm;
   user: User;
+  photoUrl: string;
 
   // This HostListen "decorator" will protect against if the user tries to exit the tab entirely with dirty changes.
   @HostListener('window:beforeunload', ['$event'])
@@ -32,6 +33,7 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+    this.authService.currentPhotoUrl.subscribe(pu => this.photoUrl = pu);
   }
 
   updateUser() {

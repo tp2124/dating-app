@@ -28,6 +28,10 @@ For this, we will be using Cloud Storage and using __Cloudinary__ due to it's gr
 * Could have the photoURL passed in the Login() Token in `AuthController.cs`, but this token is passed with every single call. It'd be best to keep this as small as possible. This is also problematic when a user changes their Main Photo. This would require getting a new token from the API everytime the MainPhoto is changed as wel...
 * We are passing down the User Information, alongside the token not in it, when a user Logs in. 
 
+## Any to Any Component Communication
+* `BehaviorSubject` is a type of observable we will use in our AuthService that all components that want the photo can reference.
+![AnyToAnyComponent](images/AnyToAnyComponentSetup.png)
+
 # ASP.NET Core
 * Running `dotnet ef migrations add AddedPublicId` to generate migration for new property in `Photo`
 * Using NuGet plugin to install `CloudinaryDotNet`. `dotnet restore` after this to ensure the package is retrieved. 

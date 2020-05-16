@@ -68,7 +68,9 @@ export class PhotoEditorComponent implements OnInit {
       photo.isMain = true;
 
       // Changing the larger profile photo in the other component.
-      this.getMemberPhotoChanged.emit(photo.url);
+      this.authService.changeMemberPhoto(photo.url);
+      this.authService.currentUser.photoUrl = photo.url;
+      localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
     }, error => {
       this.alertify.error(error);
     });

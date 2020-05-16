@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    // This is specifically run and gathering data when a user Refreshes the page.
     const token = localStorage.getItem('token');
     const user: User = JSON.parse(localStorage.getItem('user'));
     if (token) {
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
     }
     if (user) {
       this.authService.currentUser = user;
+      this.authService.changeMemberPhoto(user.photoUrl);
     }
   }
 }

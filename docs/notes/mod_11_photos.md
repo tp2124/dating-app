@@ -23,6 +23,10 @@ For this, we will be using Cloud Storage and using __Cloudinary__ due to it's gr
 ## Uploading File in Angular
 * Install notes are at: https://valor-software.com/ng2-file-upload/ .
 
+## Displaying the Main Photo of Logged in User in NavBar
+* Should attempt to avoid, even though it'd be easy, to call the repository to GetUsersMainPhoto in order to avoid the extra network call.
+* Could have the photoURL passed in the Login() Token in `AuthController.cs`, but this token is passed with every single call. It'd be best to keep this as small as possible. This is also problematic when a user changes their Main Photo. This would require getting a new token from the API everytime the MainPhoto is changed as wel...
+* We are passing down the User Information, alongside the token not in it, when a user Logs in. 
 
 # ASP.NET Core
 * Running `dotnet ef migrations add AddedPublicId` to generate migration for new property in `Photo`

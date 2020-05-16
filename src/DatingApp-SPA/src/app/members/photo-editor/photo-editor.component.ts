@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { Photo } from 'src/app/_models/photo';
 import { environment } from 'src/environments/environment';
@@ -13,10 +13,12 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[]; // Bringing in data from a parent.
+  @Output() getMemberPhotoChanged = new EventEmitter<string>(); // Going to output the photo URL.
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
+  currentMain: Photo;
 
   constructor(private authService: AuthService, private userService: UserService, private alertify: AlertifyService) {
   }
@@ -59,7 +61,14 @@ export class PhotoEditorComponent implements OnInit {
 
   setMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
-      console.log('Successfully set to main');
+      // ARRAY FILTERING for in memory updating of data. This is similar to LINQ .Where()
+      // These lines change the edit photo thumbnails's buttons for which one is actively the main.
+      this.currentMain = this.photos.filter(p => p.isMain === true)[0];
+      this.currentMain.isMain = false;
+      photo.isMain = true;
+
+      // Changing the larger profile photo in the other component.
+      this.getMemberPhotoChanged.emit(photo.url);
     }, error => {
       this.alertify.error(error);
     });

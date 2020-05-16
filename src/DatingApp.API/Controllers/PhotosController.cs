@@ -96,5 +96,36 @@ namespace DatingApp.API.Controllers
 
             return BadRequest("Could not add the photo");
         }
+
+        // This tehcnically should be an HttpPut, but we're using a POST here to have a cleaner chunk of code
+        // This breaks common REST design paradigms.
+        // Example endpoint: http://localhost:5000/api/users/6/photos/12/setMain
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMainPhoto(int userId, int id) {
+            // Checks to make sure the user's token is matching the data that this request is trying to edit matches.
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUser(userId);
+
+            if (!user.Photos.Any(p => p.Id == id)) {
+                return Unauthorized();
+            }
+
+            var photoFromRepo = await _repo.GetPhoto(id);
+
+            if (photoFromRepo.IsMain) {
+                return BadRequest("This is already the main photo.");
+            }
+
+            var currentMainPhoto = await _repo.GetMainPhotoForUser(userId);
+            currentMainPhoto.IsMain = false;
+            photoFromRepo.IsMain = true;
+            if (await _repo.SaveAll()) {
+                return NoContent();
+            }
+
+            return BadRequest("Could not set photo to main.");
+        }
     }
 }
